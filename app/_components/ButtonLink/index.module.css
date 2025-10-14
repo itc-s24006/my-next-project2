@@ -5,7 +5,7 @@
   width: 300px;
   background: url("/arrow-right.svg") no-repeat right 20px center,
     var(--color-button-primary);
-  background-color: #0070f3;
+  /* background-color: #0070f3; */
   color: var(--color-text-unpainted);
 }
 .button:hover {
