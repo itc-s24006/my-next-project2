@@ -50,10 +50,24 @@ export const getMemberList = async (queries?: MicroCMSQueries) => {
   getList           microCMSから一覧データを取得するためのメソッド。クライアントで用意されている。
 */
 
+// ニュース一覧を取得する関数
 export const getNewsList = async (queries?: MicroCMSQueries) => {
   const listData = await client.getList<News>({
     endpoint: "news",
     queries,
   });
   return listData;
+};
+
+// ニュース詳細を取得する関数
+export const getNewsDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  const detailData = await client.getListDetail<News>({
+    endpoint: "news",
+    contentId,
+    queries,
+  });
+  return detailData;
 };
