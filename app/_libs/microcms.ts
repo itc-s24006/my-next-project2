@@ -14,17 +14,15 @@ export type Member = {
 
 export type Category = {
   name: string;
-};
+} & MicroCMSListContent;
 
 export type News = {
-  id: string;
   title: string;
-  category: {
-    name: string;
-  };
-  publishedAt: string;
-  createdAt: string;
-};
+  description: string;
+  content: string;
+  thumbnail?: MicroCMSImage;
+  category: Category;
+} & MicroCMSListContent;
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
@@ -51,3 +49,11 @@ export const getMemberList = async (queries?: MicroCMSQueries) => {
 /* MicroCMSQueries  microCMSが提供するクエリパラメータの型情報
   getList           microCMSから一覧データを取得するためのメソッド。クライアントで用意されている。
 */
+
+export const getNewsList = async (queries?: MicroCMSQueries) => {
+  const listData = await client.getList<News>({
+    endpoint: "news",
+    queries,
+  });
+  return listData;
+};
