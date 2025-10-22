@@ -71,3 +71,17 @@ export const getNewsDetail = async (
   });
   return detailData;
 };
+
+// カテゴリー詳細を取得する関数
+export const getCategoryDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  const detailData = await client.getListDetail<Category>({
+    endpoint: "categories",
+    contentId,
+    queries,
+  });
+  return detailData;
+};
+// getListDetail  microCMSから特定のコンテンツの詳細データを取得するためのメソッド。
