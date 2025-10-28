@@ -14,6 +14,10 @@ type Props = {
   };
 };
 
+// もともと動的レンダリングだが、revalidate=0を指定しないとCDNキャッシュがずっと残って、
+// ユーザのアクセス時にWebサーバまでリクエストが到達しない。
+export const revalidate = 0;
+
 export default async function Page({ params, searchParams }: Props) {
   const data = await getNewsDetail(params.slug, {
     draftKey: searchParams.dk, // dkキーをリクエストに含めることで下書き記事も取得可能
