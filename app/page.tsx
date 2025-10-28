@@ -6,6 +6,8 @@ import { TOP_NEWS_LIMIT } from "@/app/_constants";
 import ButtonLink from "@/app/_components/ButtonLink";
 import NewsList from "./_components/NewsList";
 
+export const revalidate = 60; // 最新のお知らせ2件分のために60秒ごとに再生成
+
 export default async function Home() {
   const data = await getNewsList({
     limit: TOP_NEWS_LIMIT,

@@ -68,6 +68,14 @@ export const getNewsDetail = async (
     endpoint: "news",
     contentId,
     queries,
+    // ISRの設定 (データ単位のキャッシュ制御)
+    customRequestInit: {
+      next: {
+        // draftKeyが指定されていないときは60、指定されてるときは0秒に設定
+        // つまり下書きプレビューの時だけSSRを行い、それ以外はISRを行う
+        revalidate: queries?.draftKey ? 60 : 0,
+      },
+    },
   });
   return detailData;
 };
