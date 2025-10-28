@@ -4,7 +4,8 @@ import Pagination from "../_components/Pagination";
 import SearchField from "../_components/SearchField";
 import { NEWS_LIST_LIMIT } from "@/app/_constants";
 
-export const revalidate = 0;
+// ISR設定　キャッシュを利用しつつ、60秒ごとに再生成
+export const revalidate = 60;
 
 export default async function Page() {
   const { contents: news, totalCount } = await getNewsList({

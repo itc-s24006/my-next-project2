@@ -14,9 +14,7 @@ type Props = {
   };
 };
 
-// もともと動的レンダリングだが、revalidate=0を指定しないとCDNキャッシュがずっと残って、
-// ユーザのアクセス時にWebサーバまでリクエストが到達しない。
-export const revalidate = 0;
+export const revalidate = 60;
 
 export default async function Page({ params, searchParams }: Props) {
   const data = await getNewsDetail(params.slug, {
