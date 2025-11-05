@@ -1,6 +1,10 @@
 import Sheet from "@/app/_components/Sheet";
 import Hero from "@/app/_components/Hero";
 
+export const metadata = {
+  title: "メンバー",
+};
+
 // 型チェック   コンパイル時の安全性とエディタ補完のために明示する
 type Props = {
   children: React.ReactNode;
