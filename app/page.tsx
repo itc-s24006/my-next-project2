@@ -30,6 +30,8 @@ export default async function Home() {
           alt=""
           width={4000}
           height={1200}
+          priority // 優先的に画像を読み込む指定
+          sizes="(max-width: 640px) 100vw, 50vw" // 画面幅が640px以下なら画面幅いっぱいに表示、それ以外は画面幅の半分に表示
         />
       </section>
       <section className={styles.news}>
